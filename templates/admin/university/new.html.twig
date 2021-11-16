@@ -1,0 +1,31 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}New University{% endblock %}
+
+{% block body %}
+<div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    {% block header %}{% include ('admin/header.html.twig') %}{% endblock %}
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        {% block sidebar %}{% include ('admin/sidebar.html.twig') %}{% endblock %}
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+    <h2>Create new News or Events</h2>
+
+    {{ include('admin/university/_form.html.twig') }}
+
+    <a href="{{ path('admin_university_index') }}"class="btn btn-danger btn-fw">Back to List</a>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+            {% block footer %}{% include ('admin/footer.html.twig') %}{% endblock %}
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+{% endblock %}

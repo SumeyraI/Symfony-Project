@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Register</title>
+
+    {% include ('admin/head.html.twig') %}
+
+</head>
+<body>
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth">
+            <div class="row flex-grow">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light text-left p-5">
+                        <div class="brand-logo">
+                            <img src="{{ asset ('assets') }}/admin/images/logo.svg">
+                        </div>
+                        <h4>Hello! let's get started</h4>
+                        <h6 class="font-weight-light">Sign in to continue.</h6>
+
+    {{ form_start(registrationForm) }}
+
+
+                        {{ form_widget(registrationForm) }}
+                        <button class="btn btn-info btn-fw">{{ button_label|default('Save') }}</button>
+    {{ form_end(registrationForm) }}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+
+
+
+
+<!-- container-scroller -->
+                        <!-- plugins:js -->
+                        <script src="{{ asset ('assets') }}/admin//vendors/js/vendor.bundle.base.js"></script>
+                        <!-- endinject -->
+                        <!-- Plugin js for this page -->
+                        <!-- End plugin js for this page -->
+                        <!-- inject:js -->
+                        <script src="{{ asset ('assets') }}/admin//js/off-canvas.js"></script>
+                        <script src="{{ asset ('assets') }}/admin//js/misc.js"></script>
+                        <!-- endinject -->
+                        <!-- Custom js for this page -->
+                        <!-- End custom js for this page -->
+
+
+</body>
+</html>

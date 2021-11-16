@@ -1,0 +1,122 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ app.user.name }} Profile{% endblock %}
+
+{% block body %}
+
+<SCRIPT language="JavaScript" type="text/javascript">
+    function openWin(windowURL,windowName,windowFeatures){  window.open(windowURL,windowName,windowFeatures) ; }
+</SCRIPT>
+
+<!-- Subhead
+================================================== -->
+<section id="subintro">
+    <div class="jumbotron subhead" id="overview">
+        <div class="container">
+            <div class="row">
+                <div class="span8">
+                    <h3><i class="m-icon-big-swapright m-icon-white"></i>Paylaşılan Detayı</h3>
+
+                </div>
+                <div class="span4">
+                    <div class="input-append">
+                        <form class="form-search">
+                            <input type="text" class="input-medium search-query">
+                            <button type="submit" class="btn btn-inverse">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="maincontent">
+    <div class="container">
+        <div class="row">
+
+
+            {{ include('user/usermenu.html.twig') }}
+
+
+
+
+            <div class="span8">
+                <!-- start article 1 -->
+                <article class="blog-post">
+                    <div class="tooltip-demo headline">
+
+                        <span class="comment"><a href="#" rel="tooltip" data-placement="top" title="3 Comments"></a></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="span8">
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ university.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ university.title }}</td>
+            </tr>
+            <tr>
+                <th>Keywords</th>
+                <td>{{ university.keywords }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ university.description }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ university.image }}</td>
+            </tr>
+
+            <tr>
+                <th>City</th>
+                <td>{{ university.city }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ university.status }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ university.createdAt ? university.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ university.updatedAt ? university.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Detail</th>
+                <td>{{ university.detail | raw}}</td>
+            </tr>
+            <tr>
+                <th>Userid</th>
+                <td>{{ university.userid }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_university_index') }}"class="btn btn-warning">back to list</a>
+
+    <a href="{{ path('user_university_edit', {'id': university.id}) }}"class="btn btn-primary">edit</a>
+
+    {{ include('university/_delete_form.html.twig') }}
+
+                        </div>
+
+                    </div>
+
+                </article>
+                <!-- end article 1 -->
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

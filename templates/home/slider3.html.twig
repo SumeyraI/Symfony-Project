@@ -1,0 +1,30 @@
+
+                    <!------>
+                    <div class="bs-docs-example">
+                        <div id="myCarousel" class="carousel slide">
+                            <div class="carousel-inner">
+                                <div class="item ">
+
+                                {% for rs in newuniversities %}
+
+
+
+                                    <img src="{{ asset('uploads/images/' ~rs.image) }}" style="width: 800px; height: 500px" alt="" />
+                                    <div class="carousel-caption success">
+                                        <h4>{{rs.title}}</h4>
+                                        <p>{{rs.description}}</p>
+                                    </div>
+
+
+
+                                {% endfor %}
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                            <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                        </div>
+
+                    </div>
+
+
+

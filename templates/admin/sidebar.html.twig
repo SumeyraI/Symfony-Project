@@ -1,0 +1,62 @@
+
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li class="nav-item nav-profile">
+            <a href="/admin" class="nav-link">
+                <div class="profile-image">
+                    <img  src="{{ asset('uploads/images/' ~ app.user.image) }}" class="img-xs rounded-circle" alt="User image">
+                    <div class="dot-indicator bg-success"></div>
+                </div>
+                <div class="text-wrapper">
+                    <p class="designation">{{ app.user.name }} {{ app.user.surname }}</p>
+                   <a href="{{ path('app_logout') }}">Logout</a>
+
+                </div>
+                <div class="icon-container">
+                    <i class="icon-logout"></i>
+                    <div class="dot-indicator bg-danger"></div>
+                </div>
+            </a>
+        </li>
+        <li class="nav-item nav-category">
+            <span class="nav-link">Category</span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/category">
+                <span class="menu-title">Category</span>
+                <i class="icon-folder menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/university">
+                <span class="menu-title">Detaylar</span>
+                <i class="icon-menu menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/setting ">
+                <span class="menu-title">Setting</span>
+                <i class="icon-settings menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/user ">
+                <span class="menu-title">Users</span>
+                <i class="icon-user-follow menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/messages ">
+                <span class="menu-title">Form Messages</span>
+                <i class="icon-bubbles menu-icon"></i>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/comment ">
+                <span class="menu-title">User Comments</span>
+                <i class="icon-user-following menu-icon"></i>
+            </a>
+        </li>
+    </ul>
+</nav>

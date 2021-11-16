@@ -1,0 +1,55 @@
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<section id="intro">
+    <div class="jumbotron masthead">
+
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+
+
+
+                    <div class="w3-content w3-display-container">
+                        {% for rs in slider %}
+
+                            <a href="{{ path('university_show',{'id':rs.id}) }}" >
+
+
+                            <img class="mySlides" src="{{ asset('uploads/images/' ~rs.image) }}" style="width: 1000px; height:550px; display:none;" >
+
+                            </a>
+
+                        {% endfor %}
+                        <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                        <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+                      <!--  <img src="assets/img/slides/nivo/img2.jpg" data-thumb="assets/img/slides/nivo/img2.jpg" alt="" title="#htmlcaption1" />
+                        <img src="assets/img/slides/nivo/img3.jpg" data-thumb="assets/img/slides/nivo/img3.jpg" alt="" data-transition="slideInLeft" />
+                        <img src="assets/img/slides/nivo/img4.jpg" data-thumb="assets/img/slides/nivo/img4.jpg" alt="" title="#htmlcaption2" /> -->
+                    </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = x.length}
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex-1].style.display = "block";
+    }
+</script>

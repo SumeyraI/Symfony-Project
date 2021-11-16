@@ -1,0 +1,35 @@
+<section id="intro">
+    <div class="jumbotron masthead">
+
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+
+                    <div id="slider" class="nivoSlider">
+                        {% for rs in slider %}
+
+                        <div>
+                            <a href="{{ path('university_show', {'id': rs.id}) }}">
+
+                                <img src="{{ asset('uploads/images/' ~rs.image) }}" style="width: 940px; height:342px; visibility: hidden; display: inline;" data-thumb="{{ asset('uploads/images/' ~rs.image) }}" alt="{{rs.title}}" /></a>
+                        </div>
+
+                        {% endfor %}
+
+                      <!--  <img src="assets/img/slides/nivo/img2.jpg" data-thumb="assets/img/slides/nivo/img2.jpg" alt="" title="#htmlcaption1" />
+                        <img src="assets/img/slides/nivo/img3.jpg" data-thumb="assets/img/slides/nivo/img3.jpg" alt="" data-transition="slideInLeft" />
+                        <img src="assets/img/slides/nivo/img4.jpg" data-thumb="assets/img/slides/nivo/img4.jpg" alt="" title="#htmlcaption2" /> -->
+                    </div>
+                    <div id="htmlcaption1" class="nivo-html-caption">
+                        <h2>Responsive layout</h2>
+                        <p>
+                            At pro solet consequat, feugait expetenda dignissim ne has. Usu tale referrentur eu. No cetero oblique vituperatoribus vix. Vocent suscipiantur eum id, probo facete persius te usu.
+                        </p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,125 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{setting[0].title}}{% endblock %}
+ {% block keywords %}{{setting[0].keywords}}{% endblock %}
+ {% block description %}{{setting[0].description}}{% endblock %}
+
+
+
+    {% block slider %}{% include ('home/slider2.html.twig') %}{% endblock %}
+
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="tagline">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- end tagline -->
+
+    <section id="maincontent">
+        <div class="container">
+            <h3 class="heading-success"><span class="btn btn-large btn-success"><i class="m-icon-big-swapright m-icon-white"></i></span>Haberler</h3>
+            <div class="row">
+                {% for rs in newuniversities %}
+                    <div class="span3">
+                        <div class="well well-primary box" style="height: 360px">
+                            <img src="{{ asset('uploads/images/' ~rs.image) }}" style="height: 130px; width: 210px" alt="" />
+                            <h3>{{ rs.title }}</h3>
+
+                            <a href="{{ path('university_show', {'id': rs.id}) }}">Read more</a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <!-- divider -->
+            <div class="row">
+                <div class="span12">
+                    <div class="divider"></div>
+                </div>
+            </div>
+            <!-- end divider -->
+            <h3 class="heading-success"><span class="btn btn-large btn-success"><i class="m-icon-big-swapright m-icon-white"></i></span>&nbsp;Duyurular</h3>
+            <div class="row">
+
+                {% for rs in universities %}
+
+                <div class="span3">
+                    <div class="well well-warning box" style="height: 360px">
+
+
+
+
+                        <img src="{{ asset('uploads/images/' ~rs.image) }}" style="height: 130px; width: 210px" alt="" />
+                        <h3>{{ rs.title }}</h3>
+                        <p>
+
+                        </p>
+                        <a href="{{ path('university_show', {'id': rs.id}) }}">Read more</a>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+                </div>
+        </div>
+
+
+
+    <section id="bottom">
+        <div class="container">
+
+            <!-- divider -->
+            <div class="row">
+                <div class="span12">
+                    <div class="divider"></div>
+                </div>
+            </div>
+            <!-- end divider -->
+
+
+
+            <div class="row">
+                <div class="span12">
+                    <div class="divider"></div>
+                </div>
+            </div>
+            <!-- end divider -->
+            <h3 class="heading-success"><span class="btn btn-large btn-success"><i class="m-icon-big-swapright m-icon-white"></i></span>Etkinlikler</h3>
+            <div class="row">
+
+                {% for rs in etkinlik %}
+
+                    <div class="span3">
+                        <div class="well well-success box" style="height: 360px">
+
+
+
+
+                            <img src="{{ asset('uploads/images/' ~rs.image) }}" style="height: 130px; width: 210px" alt="" />
+                            <h3>{{ rs.title }}</h3>
+                            <p>
+                                {{ rs.description }}
+                            </p>
+                            <a href="{{ path('university_show', {'id': rs.id}) }}">Read more</a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+            </div>
+
+        </div>
+    </section>
+
+    </section>
+{% endblock %}

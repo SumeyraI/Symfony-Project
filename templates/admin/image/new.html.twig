@@ -1,0 +1,74 @@
+
+<!-- plugins:css -->
+<link rel="stylesheet" href="{{ asset ('assets') }}/admin/vendors/simple-line-icons/css/simple-line-icons.css">
+<link rel="stylesheet" href="{{ asset ('assets') }}/admin/vendors/flag-icon-css/css/flag-icon.min.css">
+<link rel="stylesheet" href="{{ asset ('assets') }}/admin/vendors/css/vendor.bundle.base.css">
+<!-- endinject -->
+<!-- Plugin css for this page -->
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<!-- endinject -->
+<!-- Layout styles -->
+<link rel="stylesheet" href="{{ asset ('assets') }}/admin/css/style.css"> <!-- End layout styles -->
+<link rel="shortcut icon" href="{{ asset ('assets') }}/admin/images/favicon.png" />
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title"></h4>
+        <p class="card-description"></p>
+        <form role="form" class="forms-sample" name="image" action="{{ path('admin_image_new',{'id':id}) }}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="exampleInputName1">Title</label>
+                <input type="text" class="form-control" id="image_title" name="image[title]" maxlength="50">
+                <input type="hidden" id="image_title" name="image[veri]" class="form-control" value="{{ id }}">
+            </div>
+            <div class="form-group">
+                <label>Gallery Image</label>
+
+                <div class="input-group col-xs-12">
+                    <input id="image_image" type="file" name="image[image]" class="form-control">
+
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+        </form>
+    </div>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Image</th>
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for image in images %}
+        <tr>
+            <td>{{ image.id }}</td>
+            <td>{{ image.title }}</td>
+            <td><img src="{{ asset('uploads/images/' ~  image.image ) }}" height="40"> </td>
+            <td>
+                <form method="post" action="{{ path('admin_image_delete', {'id': image.id,'hid':id})}}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ image.id) }}">
+                    <button class="btn btn-block btn-danger">Delete</button>
+                </form>
+
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="4">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+
+
+

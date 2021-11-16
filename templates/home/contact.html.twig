@@ -1,0 +1,108 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Contact |{{setting[0].title}}{% endblock %}
+ {% block keywords %}{{setting[0].keywords}}{% endblock %}
+ {% block description %}{{setting[0].description}}{% endblock %}
+
+{% block body %}
+
+    <!-- Subhead
+================================================== -->
+    <section id="subintro">
+        <div class="jumbotron subhead" id="overview">
+            <div class="container">
+                <div class="row">
+                    <div class="span8">
+                        <h3><i class="m-icon-big-swapright m-icon-white"></i> Contact us</h3>
+                        <p></p>
+                    </div>
+
+                    <div class="span4">
+                        <div class="input-append">
+                            <form class="form-search">
+                                <input type="text" class="input-medium search-query">
+                                <button type="submit" class="btn btn-inverse">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="maincontent">
+        <div class="container">
+            <div class="row">
+
+
+
+                <div class="span5">
+                    <aside>
+                        <div id="sendmessage">Your message has been sent. Thank you!</div>
+                        <div id="errormessage"></div>
+                        <h3>Contact Form</h3>
+
+                       {{ include('messages.html.twig') }}
+
+
+                        <form name="messages" method="post" role="form" class="contactForm">
+                            <div class="row">
+                                <div class="span4 form-group">
+                                    <input type="text" id="messages_name" name="messages[name]" class="input-block-level"  placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                    <div class="validation"></div>
+                                </div>
+
+                                <div class="span4 form-group">
+                                    <input type="email" class="input-block-level" id="messages_email" name="messages[email]" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                                    <div class="validation"></div>
+                                </div>
+                                <div class="span4 form-group">
+                                    <input type="text" class="input-block-level" id="messages_subject" name="messages[subject]" maxlength="75" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                                    <div class="validation"></div>
+                                </div>
+                                <div class="span4 form-group">
+                                    <textarea class="input-block-level" id="messages_message" name="messages[message]" maxlength="255" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                                    <div class="validation"></div>
+                                    <div style="text-align: center;">
+                                        <input type="hidden" name="token" value="{{ csrf_token('form-messeage') }}" />
+                                        <button class="btn btn-medium btn-success" type="submit">Send a message</button>
+
+
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </form>
+
+
+                    </aside>
+                </div>
+                <div class="span7">
+                    <div class="widget">
+
+                        <h2 class="heading-success"><span class="btn btn-large btn-success"><i class="m-icon-big-swapdown m-icon-white"></i></span>&nbsp;&nbsp;Contact Information</h2>
+                        <h3><b>Find us on social networks</b></h3>
+                        <ul class="social_small">
+                            <li class="facebook first"><a href="{{ setting[0].facebook }}" title="Facebook">Facebook</a></li>
+                            <li class="twitt"><a href="{{ setting[0].twitter }}" title="Twitter">Twitter</a></li>
+                            <br>
+                            <br>
+                            <br>
+
+
+                        </ul>
+
+                        {{ setting[0].contact | raw }}
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

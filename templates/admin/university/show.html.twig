@@ -1,0 +1,64 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}University{% endblock %}
+
+{% block body %}
+    <div class="container-scroller">
+        <!-- partial:../../partials/_navbar.html -->
+        {% block header %}{% include ('admin/header.html.twig') %}{% endblock %}
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:../../partials/_sidebar.html -->
+            {% block sidebar %}{% include ('admin/sidebar.html.twig') %}{% endblock %}
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+    <h2>Show News or Events</h2>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ university.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ university.title }}</td>
+            </tr>
+            <tr>
+                <th>Keywords</th>
+                <td>{{ university.keywords }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ university.description }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img src="{{ asset('uploads/images/' ~university.image) }}" height="100"></td>
+            </tr>
+
+            <tr>
+                <th>Status</th>
+                <td>{{ university.status }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_university_index') }}"class="btn btn-danger btn-fw">Back to List</a>
+
+    <a href="{{ path('admin_university_edit', {'id': university.id}) }}"class="btn btn-info btn-fw">Edit</a>
+
+    {{ include('admin/university/_delete_form.html.twig') }}
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    {% block footer %}{% include ('admin/footer.html.twig') %}{% endblock %}
+    <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+{% endblock %}

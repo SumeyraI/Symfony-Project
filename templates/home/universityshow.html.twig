@@ -1,0 +1,187 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ university.title }} {% endblock %}
+{% block keywords %}{{ university.keywords }} {% endblock %}
+{% block description %}{{ university.description }} {% endblock %}
+
+{% block body %}
+
+    <SCRIPT language="JavaScript" type="text/javascript">
+        function openWin(windowURL,windowName,windowFeatures){  window.open(windowURL,windowName,windowFeatures) ; }
+    </SCRIPT>
+
+    <!-- Subhead
+    ================================================== -->
+    <section id="subintro">
+        <div class="jumbotron subhead" id="overview">
+            <div class="container">
+                <div class="row">
+                    <div class="span8">
+                        <h3><i class="m-icon-big-swapright m-icon-white"></i>Detail</h3>
+                        <p>{{ university.title }}</p>
+                    </div>
+                    <div class="span4">
+                        <div class="input-append">
+                            <form class="form-search">
+                                <input type="text" class="input-medium search-query">
+                                <button type="submit" class="btn btn-inverse">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="maincontent">
+        <div class="container">
+            <div class="row">
+
+                <div class="span11">
+                    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+
+                    <div class="w3-content w3-display-container">
+
+                        <img class="mySlides" src="{{ asset('uploads/images/' ~university.image) }}"  style="width: 1200px; height:450px; display:none;" >
+
+
+                        {% for rs in images %}
+
+
+                            <img class="mySlides" src="{{ asset('uploads/images/' ~rs.image) }}" style="width: 1200px; height:450px; display:none;" >
+
+
+                        {% endfor %}
+
+                        <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                        <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+                        <!--  <img src="assets/img/slides/nivo/img2.jpg" data-thumb="assets/img/slides/nivo/img2.jpg" alt="" title="#htmlcaption1" />
+                          <img src="assets/img/slides/nivo/img3.jpg" data-thumb="assets/img/slides/nivo/img3.jpg" alt="" data-transition="slideInLeft" />
+                          <img src="assets/img/slides/nivo/img4.jpg" data-thumb="assets/img/slides/nivo/img4.jpg" alt="" title="#htmlcaption2" /> -->
+
+                    </div>
+                </div>
+
+                <div class="span11">
+                    <!-- start article 1 -->
+
+                        <div class="tooltip-demo headline">
+
+                        </div>
+
+
+                            <div class="span10">
+
+                                <table class="table">
+                                    <tbody>
+
+                                    <tr>
+                                        <th></th>
+                                        <td nowrap style="text-align: center"><h1><b>{{ university.title }}</b></h1></td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+
+
+
+                    <!-- end article 1 -->
+
+                </div>
+            </div>
+
+
+            <div class="tabbable" style="margin-bottom: 18px;">
+                <ul class="nav nav-tabs">
+                    <li class=""><a href="#tab1" data-toggle="tab">Detail</a></li>
+                    <li class="active"><a href="#tab2" data-toggle="tab">Comments</a></li>
+                </ul>
+                <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+                    <div class="tab-pane" id="tab1">
+                        <p>{{ university.detail |raw}}</p>
+                    </div>
+                    <div class="tab-pane active" id="tab2">
+
+                        {% for rs in comments %}
+                            <h5>{{ rs.subject }} [Rate : {{ rs.rate }}]</h5>
+                            <p>
+                                {{ rs.comment }}
+                            </p>
+                            <hr>
+                        {% endfor %}
+
+                        {% if app.user %}
+
+                            <h3>Write your comment</h3>
+                            {{ include('messages.html.twig') }}
+
+
+                            <form name="comment" action="{{ path('user_new_comment',{'id': university.id}) }}" method="post" role="form" class="contactForm">
+                                <div class="row">
+
+                                    <div class="span4 form-group">
+                                        <input type="text" class="input-block-level" id="comment_subject" name="comment[subject]" maxlength="75" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                                        <div class="validation"></div>
+                                    </div>
+                                    <div class="span2 form-group">
+                                        <select id="comment_rate" name="comment[rate]" class="input-block-level">
+
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                    <div class="span6 form-group">
+                                        <textarea class="input-block-level" id="comment_comment" name="comment[comment]" maxlength="255" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                                        <div class="validation"></div>
+                                        <div style="text-align: right">
+                                            <input type="hidden" name="token" value="{{ csrf_token('comment') }}" /><br>
+                                            <button class="btn btn-medium btn-success" type="submit">Send Comment</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        {% else %}
+                            <li class="inverse">
+                                <a href="/loginuser"><i class="icon-lock"></i> If you want to add comment please login</a>
+                            </li>
+                        {% endif %}
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- /tabbable -->
+
+        </div>
+    </section>
+
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (n > x.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = x.length}
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex-1].style.display = "block";
+        }
+    </script>
+
+{% endblock %}
